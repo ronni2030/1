@@ -1,7 +1,7 @@
 name: Ronny CI/CD
 
 on:
-  push:
+  push:  
     branches:
       - Ronny-villa
   pull_request:
