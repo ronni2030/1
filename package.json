@@ -1,5 +1,5 @@
 {
-  "name": "ronny-villa",
+  "name": "@jenn220/ronny-villa",
   "version": "1.0.0",
   "description": "Pipeline CI/CD creado por Ronny-Villa con nombres personalizados",
   "main": "src/appCore.js",
