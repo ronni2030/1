@@ -1,0 +1,39 @@
+name: Ronny CI/CD
+
+on:
+  push:
+    branches:
+      - Ronny-villa
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Generate package
+        run: npm pack
+        working-directory: .
+
+      - name: List generated files
+        run: ls -l
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ronny-villa-package
+          path: ./ronny-villa-1.0.0.tgz

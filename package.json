@@ -1,0 +1,13 @@
+{
+  "name": "ronny-villa",
+  "version": "1.0.0",
+  "description": "Pipeline CI/CD creado por Ronny-Villa con nombres personalizados",
+  "main": "app/src/appCore.js",
+  "scripts": {
+    "test": "node app/tests/runTests.js",
+    "build": "echo 'Construcción generada por Ronny-Villa'",
+    "prepack": "npm run build"
+  },
+  "author": "Ronny-Villa",
+  "license": "MIT"
+}
