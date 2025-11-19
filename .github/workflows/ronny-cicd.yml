@@ -53,4 +53,4 @@ jobs:
           context: .
           file: ./Ronny.Dockerfile
           push: true
-          tags: ghcr.io/ronny-villa/ronny-villa:latest
+          tags: ghcr.io/ronnyvilla/ronny-villa:latest
