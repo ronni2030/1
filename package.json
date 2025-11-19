@@ -5,9 +5,9 @@
   "main": "src/appCore.js",
   "scripts": {
     "test": "node tests/runTests.js",
-    "build": "echo 'Construcción generada por Ronny-Villa'",
+    "build": "echo 'Construcción generada por ronny-Villa'",
     "prepack": "npm run build"
   },
-  "author": "Ronny-Villa",
+  "author": "ronny-Villa",
   "license": "MIT"
 }
