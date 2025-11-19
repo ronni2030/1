@@ -3,7 +3,7 @@ name: Ronny CI/CD
 on:
   push:  
     branches:
-      - Ronny-villa
+      - master
   pull_request:
 
 jobs:
