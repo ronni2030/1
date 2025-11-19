@@ -39,12 +39,11 @@ jobs:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
-      # 👇 Login a GHCR (obligatorio antes de publicar)
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ github.actor }}   # = ronni2030
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Construir y publicar imagen Docker
@@ -53,4 +52,4 @@ jobs:
           context: .
           file: ./Ronny.Dockerfile
           push: true
-          tags: ghcr.io/ronnyvilla/ronny-villa:latest
+          tags: ghcr.io/ronni2030/ronny-villa:latest
