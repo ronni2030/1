@@ -1,39 +1,36 @@
-name: Ronny CI/CD
+name: Publicar Package NPM
 
 on:
-  push:  
-    branches:
-      - master
-  pull_request:
+  push:
+    branches: [ "Ronny-villa" ]
 
 jobs:
-  build-and-test:
+  build-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
-      - name: Checkout repository
+      - name: Clonar repositorio
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com/'
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm install
 
-      - name: Run tests
+      - name: Ejecutar pruebas
         run: npm test
 
-      - name: Generate package
+      - name: Generar paquete
         run: npm pack
-        working-directory: .
 
-      - name: List generated files
-        run: ls -l
-
-      - name: Upload package artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ronny-villa-package
-          path: ./ronny-villa-1.0.0.tgz
+      - name: Publicar package en GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
