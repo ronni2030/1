@@ -1,17 +1,45 @@
-name: CI/CD
+name: Pruebas y publicación del contenedor
 
 on:
   push:
-    branches: "master"
+    branches: ["master"]
 
 jobs:
-  build-and-push:
+
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Clonar el repositorio
         uses: actions/checkout@v4
 
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar pruebas
+        run: |
+          pytest -v
+          ruff check .
+
+  build_and_push:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      # 👇 Login a GHCR (obligatorio antes de publicar)
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
@@ -19,7 +47,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push image
+      - name: Construir y publicar imagen Docker
         uses: docker/build-push-action@v6
         with:
           context: .
