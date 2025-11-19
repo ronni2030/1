@@ -2,9 +2,7 @@ name: Pruebas y publicación del contenedor
 
 on:
   push:
-    branches: [ "joel" ]
-  pull_request:
-    branches: [ "joel" ]
+    branches: "master"
 
 jobs:
   test:
@@ -50,6 +48,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./molina.Dockerfile 
+          file: ./Ronny.Dockerfile
           push: true
-          tags: ghcr.io/jenn220/joel:latest
+          tags: ghcr.io/ronnyvilla/rinny-villa:latest

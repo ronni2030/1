@@ -1,4 +1,4 @@
-from app import app
+from app.Core import app
 
 def test_suma_endpoint():
     client = app.test_client()

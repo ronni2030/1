@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Bienvenido a mi API de suma 🧮"
+    return "Bienvenido a la API de suma creada por Ronny-Villa 🧮"
 
 @app.route("/suma")
 def sumar():
