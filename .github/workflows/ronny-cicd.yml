@@ -2,7 +2,7 @@ name: Publicar Package NPM
 
 on:
   push:
-    branches: [ "Ronny-villa" ]
+    branches: "master"
 
 jobs:
   build-and-publish:
